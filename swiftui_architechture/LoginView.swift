@@ -27,7 +27,6 @@ struct LoginView: View {
         guard !username.isEmpty, !password.isEmpty else {
             alertMessage = "Please enter both username and password."
             isShowingAlert = true
-            userSettings.userToken = "passwordtoken"
             return
         }
 
@@ -35,6 +34,7 @@ struct LoginView: View {
         // In a real application, you would typically make a network request here
         if username == "testuser" && password == "password123" {
             alertMessage = "Login successful!"
+            userSettings.userToken = "passwordtoken"
         } else {
             alertMessage = "Invalid username or password."
         }
@@ -52,6 +52,7 @@ struct LoginView: View {
 
                 if success {
                     alertMessage = "Login successful!"
+                    userSettings.userToken = "facelogintoken"
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         // Simulate some processing time, then dismiss
                         presentationMode.wrappedValue.dismiss()
